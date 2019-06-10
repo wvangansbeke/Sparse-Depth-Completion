@@ -61,7 +61,7 @@ Comparision with state-of-the-art:
 
 ## Discussion
 
-Practical discusion:
+Practical discussion:
 
 - I recently increased the stability of the training process and I also made the convergence faster by adding some skip connections between the global and local network.
 Initially I only used guidance by multiplication with an attention map (=probability), but found out that it is less robust and that differences between a focal MSE and vanilla MSE loss function were now negligible.
