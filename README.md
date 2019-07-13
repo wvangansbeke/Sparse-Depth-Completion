@@ -1,6 +1,16 @@
 # Sparse-Depth-Completion
 This repo contains the implementation of our paper [Sparse and Noisy LiDAR Completion with RGB Guidance and Uncertainty](https://arxiv.org/abs/1902.05356) by [Wouter Van Gansbeke](https://github.com/wvangansbeke), Davy Neven, Bert De Brabandere and Luc Van Gool.
 
+If you find this interesting or relevant to your work, consider citing:
+```
+@article{wvangansbeke_depth_2019,
+  title={Sparse and Noisy LiDAR Completion with RGB Guidance and Uncertainty},
+  author={Van Gansbeke, Wouter and Neven, Davy and De Brabandere, Bert and Van Gool, Luc},
+  journal={arXiv preprint arXiv:1902.05356},
+  year={2019}
+}
+```
+
 ## Introduction
 Monocular depth prediction methods fail to generate absolute and precise depth maps and stereoscopic approaches are still significantly outperformed by LiDAR based approaches. The goal of the depth completion task is to generate dense depth predictions from sparse and irregular point clouds. This project makes use of uncertainty to combine multiple sensor data in order to generate accurate depth predictions. Mapped lidar points together with RGB images (monococular) are used in this framework. This method holds the **1st place** entry on the [KITTI depth completion benchmark](http://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion) at the time of submission of the paper.
 
