@@ -1,5 +1,6 @@
 final_old
 *.pyc
 __pycache__/
+__pycache__
 Saved/
 *.pth

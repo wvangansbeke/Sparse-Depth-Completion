@@ -1,19 +1,23 @@
 # Sparse-Depth-Completion
 
-# ATTENTION:
-I will temporarily make the code private since the legal team wants to find an appropriate license (code can be used for academic purposes only). I will put it back online soon (~ 1 week). I will also use this moment to make some changes. You can still ask questions in the meantime. Sorry for the inconvenience (or look at the history in the meantime).
-
 This repo contains the implementation of our paper [Sparse and Noisy LiDAR Completion with RGB Guidance and Uncertainty](https://arxiv.org/abs/1902.05356) by [Wouter Van Gansbeke](https://github.com/wvangansbeke), Davy Neven, Bert De Brabandere and Luc Van Gool.
 
 If you find this interesting or relevant to your work, consider citing:
+
 ```
-@article{wvangansbeke_depth_2019,
-  title={Sparse and Noisy LiDAR Completion with RGB Guidance and Uncertainty},
-  author={Van Gansbeke, Wouter and Neven, Davy and De Brabandere, Bert and Van Gool, Luc},
-  journal={arXiv preprint arXiv:1902.05356},
-  year={2019}
+@inproceedings{wvangansbeke_depth_2019,
+    author={W. {Van Gansbeke} and D. {Neven} and B. {De Brabandere} and L. {Van Gool}},
+    booktitle={2019 16th International Conference on Machine Vision Applications (MVA)},
+    title={Sparse and Noisy LiDAR Completion with RGB Guidance and Uncertainty},
+    year={2019},
+    pages={1-6},
+    month={May}
 }
 ```
+
+## License
+
+This software is released under a creative commons license which allows for personal and research use only. For a commercial license please contact the authors. You can view a license summary [here](http://creativecommons.org/licenses/by-nc/4.0/)
 
 ## Introduction
 Monocular depth prediction methods fail to generate absolute and precise depth maps and stereoscopic approaches are still significantly outperformed by LiDAR based approaches. The goal of the depth completion task is to generate dense depth predictions from sparse and irregular point clouds. This project makes use of uncertainty to combine multiple sensor data in order to generate accurate depth predictions. Mapped lidar points together with RGB images (monococular) are used in this framework. This method holds the **1st place** entry on the [KITTI depth completion benchmark](http://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion) at the time of submission of the paper.
@@ -29,16 +33,57 @@ See full demo on [YouTube](https://www.youtube.com/watch?v=Kr0W7io5rHw&feature=y
 
 
 ## Requirements
-Python 3.6 was used.
+Python 3.7
 The most important packages are pytorch, torchvision, numpy, pillow and matplotlib.
+(Works with Pytorch 1.1)
 
 
 ## Dataset
-The [Kitti dataset](www.cvlibs.net/datasets/kitti/) has been used. Once you've downloaded the dataset, you can find the required preprocessing in:
+The [Kitti dataset](www.cvlibs.net/datasets/kitti/) has been used. First download the dataset of the depth completion. Secondly, you'll need to unzip and download the camera images from kitti. Place the `Download` folder in the root directory (directory with the downloaded zip files) of the dataset and run the following script. This script will take care of both tasks(unzip + download):
+
+```
+cd Data/Download
+source download_raw_files.sh
+```
+
+Remove the following 8 files manually, since there is no LiDAR for these camera frames:
+
+```
+2011_09_26_drive_0009_sync/(image02 ; image03)/data/177.png
+2011_09_26_drive_0009_sync/(image02 ; image03)/data/178.png
+2011_09_26_drive_0009_sync/(image02 ; image03)/data/179.png
+2011_09_26_drive_0009_sync/(image02 ; image03)/data/180.png
+```
+ 
+The complete dataset consists of 85898 training samples, 6852 validation samples, 1000 selected validation samples and 1000 test samples.
+
+## Preprocessing
+This step is optional, but allows you to transform the images to jpgs and to downsample the original lidar frames. This will create a new dataset in $dest.
+You can find the required preprocessing in:
 `Datasets/Kitti_loader.py`
 
-Firstly, The png's are transformed to jpg - images to save place. Secondly, two directories are built i.e. one for training and one for validation.
-The dataset consists of 85898 training samples, 6852 validation samples, 1000 selected validation samples and 1000 test samples.
+Run:
+
+`source Shell/preprocess $datapath $dest $num_samples`
+
+(Firstly, I transformed the png's to jpg - images to save place. Secondly, two directories are built i.e. one for training and one for validation. See `Datasets/Kitti_loader.py`)
+
+Dataset structure should look like this:
+```
+|--depth selection
+|-- Depth
+     |-- train
+           |--date
+               |--sequence1
+               | ...
+     |--validation
+|--RGB
+    |--train
+         |--date
+             |--sequence1
+             | ...
+    |--validation
+```
 
 
 ## Run Code
@@ -51,7 +96,16 @@ Flags:
 - Set flag "pretrained" to true or false to use a model pretrained on Cityscapes for the global branch.
 - See `python main.py --help` for more information.
 
+or 
+
+`source Shell/train.sh $datapath`
+
+checkout more details in the bash file.
+
+
+
 ## Trained models
+Our network architecture is based on [ERFNet](https://github.com/Eromera/erfnet_pytorch).
 
 You can find the model pretrained on Cityscapes [here](https://drive.google.com/drive/folders/1U7dvH4sC85KRVuV19fRpaMzJjE-m3D9x?usp=sharing). This model is used for the global network.
 
@@ -84,3 +138,6 @@ Be aware that this change will alter the appearance of the confidence maps since
 - Feel free to experiment with different architectures for the global or local network. It is easy to add new architectures to `Models/__init__.py`
 
 - I used a Tesla V100 GPU for evaluation.
+
+## Acknowledgement
+This work was supported by Toyota, and was carried out at the TRACE Lab at KU Leuven (Toyota Research on Automated Cars in Europe - Leuven)
