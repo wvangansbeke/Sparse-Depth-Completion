@@ -6,12 +6,12 @@ If you find this interesting or relevant to your work, consider citing:
 
 ```
 @inproceedings{wvangansbeke_depth_2019,
-    author={W. {Van Gansbeke} and D. {Neven} and B. {De Brabandere} and L. {Van Gool}},
+    author={Van Gansbeke, Wouter and Neven, Davy and De Brabandere, Bert and Van Gool, Luc},
     booktitle={2019 16th International Conference on Machine Vision Applications (MVA)},
     title={Sparse and Noisy LiDAR Completion with RGB Guidance and Uncertainty},
     year={2019},
     pages={1-6},
-    month={May}
+    organization={IEEE}
 }
 ```
 
