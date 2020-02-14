@@ -116,7 +116,7 @@ Save the model in a folder in the `Saved` directory.
 
 and execute the following command:
 
-`source Test/test.sh /path/to/dataset/ /path/to/directory_with_saved_model/ /path/to/directory_with_ground_truth_for_selected_validation_files/`
+`source Test/test.sh /path/to/directory_with_saved_model/ $num_samples /path/to/dataset/ /path/to/directory_with_ground_truth_for_selected_validation_files/`
 
 (You might have to recompile the C files for testing, provided by KITTI, if your architecture is different from mine)
 
