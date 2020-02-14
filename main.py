@@ -213,7 +213,7 @@ def main():
                 print("=> no checkpoint found at '{}'".format(best_file_name))
         else:
             print("=> no checkpoint found at due to empy list in folder {}".format(args.save_path))
-        validate(valid_selection_loader, model, criterion_global, criterion_local)
+        validate(valid_selection_loader, model, criterion_lidar, criterion_rgb, criterion_local, criterion_guide)
         return
 
     # Start training from clean slate
