@@ -27,7 +27,7 @@ The contribution of this paper is threefold:
 * Confidence maps are learned for the global branch and the local branch in an unsupervised manner. The predicted depth maps are weighted by their respective confidence map. This is the late fusion technique used in our framework.
 * This method ranks first on the KITTI depth completion benchmark without using additional data or postprocessing.
 
-See full demo on [YouTube](https://www.youtube.com/watch?v=Kr0W7io5rHw&feature=youtu.be). 
+See full demo on [YouTube](https://www.youtube.com/watch?v=Kr0W7io5rHw&feature=youtu.be). The predictions of our model for the KITTI test set can be downloaded [here](https://drive.google.com/drive/folders/1U7dvH4sC85KRVuV19fRpaMzJjE-m3D9x).
 
 ![demo](https://user-images.githubusercontent.com/9694230/51806092-db766c00-2275-11e9-8de0-888bed0fc9e8.gif)
 
@@ -109,7 +109,8 @@ Our network architecture is based on [ERFNet](https://github.com/Eromera/erfnet_
 
 You can find the model pretrained on Cityscapes [here](https://drive.google.com/drive/folders/1U7dvH4sC85KRVuV19fRpaMzJjE-m3D9x?usp=sharing). This model is used for the global network.
 
-You can find a fully trained model for KITTI [here](https://drive.google.com/drive/folders/1U7dvH4sC85KRVuV19fRpaMzJjE-m3D9x?usp=sharing). The RMSE is around 802 mm on the selected validation set for this model as reported in the paper.
+You can find a fully trained model and its corresponding predictions for the KITTI test set [here](https://drive.google.com/drive/folders/1U7dvH4sC85KRVuV19fRpaMzJjE-m3D9x?usp=sharing). 
+The RMSE is around 802 mm on the selected validation set for this model as reported in the paper. 
 
 To test it: 
 Save the model in a folder in the `Saved` directory.
