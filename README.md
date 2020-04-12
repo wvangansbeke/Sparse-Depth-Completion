@@ -102,8 +102,6 @@ or
 
 checkout more details in the bash file.
 
-
-
 ## Trained models
 Our network architecture is based on [ERFNet](https://github.com/Eromera/erfnet_pytorch).
 
