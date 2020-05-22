@@ -39,22 +39,9 @@ The most important packages are pytorch, torchvision, numpy, pillow and matplotl
 
 
 ## Dataset
-The [Kitti dataset](www.cvlibs.net/datasets/kitti/) has been used. First download the dataset of the depth completion. Secondly, you'll need to unzip and download the camera images from kitti. Place the `Download` folder in the root directory (directory with the downloaded zip files) of the dataset and run the following script. This script will take care of both tasks(unzip + download):
+The [Kitti dataset](www.cvlibs.net/datasets/kitti/) has been used. First download the dataset of the depth completion. Secondly, you'll need to unzip and download the camera images from kitti. 
+I used the file `download_raw_files.sh`, but this is at your own risk. Make sure you understand it, otherwise don't use it. If you want to keep it safe, go to kitti's website. 
 
-```
-cd Data/Download
-source download_raw_files.sh
-```
-
-Remove the following 8 files manually, since there is no LiDAR for these camera frames:
-
-```
-2011_09_26_drive_0009_sync/(image02 ; image03)/data/177.png
-2011_09_26_drive_0009_sync/(image02 ; image03)/data/178.png
-2011_09_26_drive_0009_sync/(image02 ; image03)/data/179.png
-2011_09_26_drive_0009_sync/(image02 ; image03)/data/180.png
-```
- 
 The complete dataset consists of 85898 training samples, 6852 validation samples, 1000 selected validation samples and 1000 test samples.
 
 ## Preprocessing
