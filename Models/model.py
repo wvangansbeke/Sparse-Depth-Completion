@@ -166,9 +166,9 @@ if __name__ == '__main__':
     batch_size = 4
     in_channels = 4
     H, W = 256, 1216
-    model = uncertainty_net(34, in_channels).cuda()
+    model = uncertainty_net(in_channels).cuda()
     print(model)
     print("Number of parameters in model is {:.3f}M".format(sum(tensor.numel() for tensor in model.parameters())/1e6))
     input = torch.rand((batch_size, in_channels, H, W)).cuda().float()
     out = model(input)
-    print(out.shape)
+    print(out[0].shape)
