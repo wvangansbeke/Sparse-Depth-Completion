@@ -20,7 +20,7 @@ If you find this interesting or relevant to your work, consider citing:
 This software is released under a creative commons license which allows for personal and research use only. For a commercial license please contact the authors. You can view a license summary [here](http://creativecommons.org/licenses/by-nc/4.0/)
 
 ## Introduction
-Monocular depth prediction methods fail to generate absolute and precise depth maps and stereoscopic approaches are still significantly outperformed by LiDAR based approaches. The goal of the depth completion task is to generate dense depth predictions from sparse and irregular point clouds. This project makes use of uncertainty to combine multiple sensor data in order to generate accurate depth predictions. Mapped lidar points together with RGB images (monococular) are used in this framework. This method holds the **1st place** entry on the [KITTI depth completion benchmark](http://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion) at the time of submission of the paper.
+Monocular depth prediction methods fail to generate absolute and precise depth maps and stereoscopic approaches are still significantly outperformed by LiDAR based approaches. The goal of the depth completion task is to generate dense depth predictions from sparse and irregular point clouds. This project makes use of uncertainty to combine multiple sensor data in order to generate accurate depth predictions. Mapped lidar points together with RGB images (monocular) are used in this framework. This method holds the **1st place** entry on the [KITTI depth completion benchmark](http://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion) at the time of submission of the paper.
 
 The contribution of this paper is threefold:
 * Global and local information are combined in order to accurately complete and correct the sparse and noisy LiDAR input. Monocular RGB images are used for the guidance of this depth completion task.
@@ -117,7 +117,7 @@ Comparision with state-of-the-art:
 
 Practical discussion:
 
-- I recently increased the stability of the training process and I also made the convergence faster by adding some skip connections between the global and local network.
+- I recently increased the stability of the training process and I also made the convergence faster by adding some skip connections between the global and local networks.
 Initially I only used guidance by multiplication with an attention map (=probability), but found out that it is less robust and that differences between a focal MSE and vanilla MSE loss function were now negligible.
 Be aware that this change will alter the appearance of the confidence maps since fusion happens at mutliple stages now.
 
